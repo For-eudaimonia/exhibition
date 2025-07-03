@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <title>미대생을 위한 웹 전시회</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-mirror-component/dist/aframe-mirror-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ngokevin/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <style>
+      body { margin: 0; }
+    </style>
+  </head>
+  <body>
+    <script type="module" src="../src/design.js"></script>
+    
+    <a-scene id="scene" gallery-design>
+      <!-- 갤러리 공간(박스) -->
+      <a-box position="0 2 0" width="10" height="4" depth="30" color="#f5f5f5" opacity="0.05"></a-box>
+      
+      <!-- 바닥 -->
+      <a-plane class="floor" position="0 0 0" rotation="-90 0 0" width="10" height="30" color="#e0e0e0"></a-plane>
+      
+      <!-- 천장 -->
+      <a-plane class="ceiling" position="0 4 0" rotation="90 0 0" width="10" height="30" color="#fafafa"></a-plane>
+      
+      <!-- 앞쪽 벽 -->
+      <a-plane class="wall front" position="0 2 -15" rotation="0 0 0" width="10" height="4" color="#bbbbbb"></a-plane>
+      
+      <!-- 뒤쪽 벽 -->
+      <a-plane class="wall back" position="0 2 15" rotation="0 180 0" width="10" height="4" color="#bbbbbb"></a-plane>
+      
+      <!-- 왼쪽 벽 -->
+      <a-plane class="wall left" position="-5 2 0" rotation="0 90 0" width="30" height="4" color="#cccccc"></a-plane>
+      
+      <!-- 오른쪽 벽 -->
+      <a-plane class="wall right" position="5 2 0" rotation="0 -90 0" width="30" height="4" color="#cccccc"></a-plane>
+
+      <!-- 카메라(사용자 Rig) -->
+      <a-entity id="rig" camera position="0 2.0 0" wasd-controls="acceleration:30; fly:false" look-controls restrict-movement></a-entity>
+
+      <!-- 작품 8개 (부모-자식 구조, 내부 0.3m) -->
+      <!-- 앞쪽 벽 중앙 -->
+      <a-entity id="art-front" class="art" position="0 2 -15" rotation="0 0 0">
+        <a-box position="0 0 0.01" width="1.54" height="1.19" depth="0.02" material="color: #5c5c5c; shader: standard; flatShading: true; roughness:1; metalness:0"></a-box>
+        <a-plane src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" crossorigin="anonymous" position="0 0 0.05" width="1.4" height="1.05" side="double" material="shader: standard; roughness:0.9; metalness:0;"></a-plane>
+      </a-entity>
+      
+      <!-- 뒤쪽 벽 중앙 -->
+      <a-entity id="art-back" class="art" position="0 2 15" rotation="0 180 0">
+        <a-box position="0 0 0.01" width="1.54" height="1.19" depth="0.02" material="color: #5c5c5c; shader: standard; flatShading: true; roughness:1; metalness:0"></a-box>
+        <a-plane src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca" crossorigin="anonymous" position="0 0 0.05" width="1.4" height="1.05" side="double" material="shader: standard; roughness:0.9; metalness:0;"></a-plane>
+      </a-entity>
+      
+      <!-- 왼쪽 벽 3개 -->
+      <a-entity id="art-left1" class="art" position="-5 2 -10" rotation="0 90 0">
+        <a-box position="0.01 0 0" width="1.54" height="1.19" depth="0.02" material="color: #5c5c5c; shader: standard; flatShading: true; roughness:1; metalness:0"></a-box>
+        <a-plane src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308" crossorigin="anonymous" position="0 0 0.05" width="1.4" height="1.05" side="double" material="shader: standard; roughness:0.9; metalness:0;"></a-plane>
+      </a-entity>
+      
+      <a-entity id="art-left2" class="art" position="-5 2 0" rotation="0 90 0">
+        <a-box position="0.01 0 0" width="1.54" height="1.19" depth="0.02" material="color: #5c5c5c; shader: standard; flatShading: true; roughness:1; metalness:0"></a-box>
+        <a-plane src="https://images.unsplash.com/photo-1465101178521-c1a9136a3c8b" crossorigin="anonymous" position="0 0 0.05" width="1.4" height="1.05" side="double" material="shader: standard; roughness:0.9; metalness:0;"></a-plane>
+      </a-entity>
+      
+      <a-entity id="art-left3" class="art" position="-5 2 10" rotation="0 90 0">
+        <a-box position="0.01 0 0" width="1.54" height="1.19" depth="0.02" material="color: #5c5c5c; shader: standard; flatShading: true; roughness:1; metalness:0"></a-box>
+        <a-plane src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" crossorigin="anonymous" position="0 0 0.05" width="1.4" height="1.05" side="double" material="shader: standard; roughness:0.9; metalness:0;"></a-plane>
+      </a-entity>
+      
+      <!-- 오른쪽 벽 3개 -->
+      <a-entity id="art-right1" class="art" position="5 2 -10" rotation="0 -90 0">
+        <a-box position="0.01 0 0" width="1.54" height="1.19" depth="0.02" material="color: #5c5c5c; shader: standard; flatShading: true; roughness:1; metalness:0"></a-box>
+        <a-plane src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca" crossorigin="anonymous" position="0 0 0.05" width="1.4" height="1.05" side="double" material="shader: standard; roughness:0.9; metalness:0;"></a-plane>
+      </a-entity>
+      
+      <a-entity id="art-right2" class="art" position="5 2 0" rotation="0 -90 0">
+        <a-box position="0.01 0 0" width="1.54" height="1.19" depth="0.02" material="color: #5c5c5c; shader: standard; flatShading: true; roughness:1; metalness:0"></a-box>
+        <a-plane src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" crossorigin="anonymous" position="0 0 0.05" width="1.4" height="1.05" side="double" material="shader: standard; roughness:0.9; metalness:0;"></a-plane>
+      </a-entity>
+      
+      <a-entity id="art-right3" class="art" position="5 2 10" rotation="0 -90 0">
+        <a-box position="0.01 0 0" width="1.54" height="1.19" depth="0.02" material="color: #5c5c5c; shader: standard; flatShading: true; roughness:1; metalness:0"></a-box>
+        <a-plane src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308" crossorigin="anonymous" position="0 0 0.05" width="1.4" height="1.05" side="double" material="shader: standard; roughness:0.9; metalness:0;"></a-plane>
+      </a-entity>
+
+      <!-- 이동 제한 컴포넌트 정의 -->
+      <script>
+        AFRAME.registerComponent('restrict-movement', {
+          tick: function () {
+            var el = this.el;
+            var pos = el.getAttribute('position');
+            // 갤러리 공간 한계: x: -4.7~4.7, y: 1.2~2.5, z: -14.7~14.7
+            pos.x = Math.max(-4.7, Math.min(4.7, pos.x));
+            pos.y = Math.max(1.2, Math.min(2.5, pos.y));
+            pos.z = Math.max(-14.7, Math.min(14.7, pos.z));
+            el.setAttribute('position', pos);
+          }
+        });
+      </script>
+    </a-scene>
+  </body>
+</html> 
